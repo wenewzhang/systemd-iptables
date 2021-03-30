@@ -1,0 +1,13 @@
+[Unit]
+Description=Packet Filtering Framework
+DefaultDependencies=no
+After=iptables.service NetworkManager.service
+Before=sysinit.target
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/ban-smtp.sh
+ExecReload=/usr/bin/ban-smtp.sh
+ExecStop=/usr/bin/allow-smtp.sh
+RemainAfterExit=yes
+[Install]
+WantedBy=multi-user.target
