@@ -1,7 +1,7 @@
 [Unit]
 Description=Ban SMTP 
 DefaultDependencies=no
-After=iptables.service NetworkManager.service
+After=ufw.service
 Before=sysinit.target
 [Service]
 Type=oneshot
