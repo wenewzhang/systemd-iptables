@@ -1,8 +1,8 @@
 [Unit]
 Description=Ban SMTP 
-DefaultDependencies=no
-After=ufw.service
-Before=sysinit.target
+After=docker.service
+BindsTo=docker.service
+ReloadPropagatedFrom=docker.service
 [Service]
 Type=oneshot
 ExecStart=/usr/bin/ban-smtp.sh
