@@ -1,5 +1,5 @@
 [Unit]
-Description=Packet Filtering Framework
+Description=Ban SMTP 
 DefaultDependencies=no
 After=iptables.service NetworkManager.service
 Before=sysinit.target
