@@ -27,3 +27,4 @@ systemctl enable bansmtp.service
 systemctl start bansmtp.service
 ```
 
+git clone https://github.com/wenewzhang/systemd-iptables

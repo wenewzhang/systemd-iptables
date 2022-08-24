@@ -1,0 +1,13 @@
+[Unit]
+Description=Ban smtp on iptables
+Documentation=
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/ipt_no_smtp.sh
+ExecReload=/usr/bin/ipt_no_smtp.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
