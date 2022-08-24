@@ -1,0 +1,13 @@
+[Unit]
+Description=Ban smtp on nf
+Documentation=
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/nf_no_smtp.sh
+ExecReload=/usr/bin/nf_no_smtp.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
