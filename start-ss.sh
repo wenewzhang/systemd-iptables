@@ -16,3 +16,6 @@ systemctl start shadowsocks-libev-server@con1873.service
 systemctl start shadowsocks-libev-server@con1874.service 
 systemctl start shadowsocks-libev-server@con1875.service 
 systemctl start shadowsocks-libev-server@con1876.service 
+systemctl start shadowsocks-libev-server@con1877.service 
+systemctl start shadowsocks-libev-server@con1878.service 
+systemctl start shadowsocks-libev-server@con1879.service 
