@@ -16,3 +16,7 @@ systemctl enable shadowsocks-libev-server@con1873.service --now
 systemctl enable shadowsocks-libev-server@con1874.service --now
 systemctl enable shadowsocks-libev-server@con1875.service --now
 systemctl enable shadowsocks-libev-server@con1876.service --now
+
+systemctl enable shadowsocks-libev-server@con1878.service --now
+systemctl enable shadowsocks-libev-server@con1879.service --now
+systemctl enable shadowsocks-libev-server@con1877.service --now
