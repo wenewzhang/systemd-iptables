@@ -1,7 +1,5 @@
 #!/bin/sh
 systemctl start shadowsocks-libev-server@config.service 
-systemctl start shadowsocks-libev-server
-systemctl start shadowsocks-libev
 systemctl start shadowsocks-libev-server@con1861.service 
 systemctl start shadowsocks-libev-server@con1862.service 
 systemctl start shadowsocks-libev-server@con1863.service 

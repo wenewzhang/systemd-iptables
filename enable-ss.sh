@@ -1,7 +1,5 @@
 #!/bin/sh
 systemctl enable shadowsocks-libev-server@config.service --now
-systemctl enable shadowsocks-libev-server
-systemctl enable shadowsocks-libev
 systemctl enable shadowsocks-libev-server@con1861.service --now
 systemctl enable shadowsocks-libev-server@con1862.service --now
 systemctl enable shadowsocks-libev-server@con1863.service --now

@@ -1,7 +1,5 @@
 #!/bin/sh
 systemctl disable shadowsocks-libev-server@config.service --now
-systemctl disable shadowsocks-libev-server
-systemctl disable shadowsocks-libev
 systemctl disable shadowsocks-libev-server@con1861.service --now
 systemctl disable shadowsocks-libev-server@con1862.service --now
 systemctl disable shadowsocks-libev-server@con1863.service --now
