@@ -100,7 +100,7 @@ else
   PWD=$(cat /dev/urandom | tr -dc '[:alpha:]' | fold -w ${1:-12} | head -n 1)
 fi
 
-cat > /etc/shadowsocks-libev/con$PORT.conf <<EOF
+cat > /etc/shadowsocks-libev/con$PORT.json <<EOF
 {
     "server":["$IP"],
     "mode":"$PROTOCOL",
