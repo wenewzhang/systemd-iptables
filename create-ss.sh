@@ -101,7 +101,7 @@ else
   PWD=$(cat /dev/urandom | tr -dc '[:alpha:]' | fold -w ${1:-12} | head -n 1)
 fi
 
-cat > /tmp/ss-$PORT.conf <<EOF
+cat > /etc/shadowsocks-libev/con$PORT.conf <<EOF
 {
     "server":["$IP"],
     "mode":"$PROTOCOL",
@@ -114,3 +114,5 @@ cat > /tmp/ss-$PORT.conf <<EOF
     "fast_open": true
 }
 EOF
+
+systemctl enable shadowsocks-libev-server@con$PORT.service --now
