@@ -114,4 +114,5 @@ cat > /etc/shadowsocks-libev/con$PORT.json <<EOF
 }
 EOF
 
+cat /etc/shadowsocks-libev/con$PORT.json 
 systemctl enable shadowsocks-libev-server@con$PORT.service --now
