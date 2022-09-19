@@ -95,7 +95,10 @@ echo "Selected choice: $PASS"
 
 IP=$(get_ip)
 if [ $PASS == 'simple' ]; then
-  PWD=${RANDOM} 
+  PWD=${RANDOM}
+  while [ $(($PWD)) -lt 100000 ]; do 
+    PWD=$(($PWD*10+$PWD%9))
+  done
 else
   PWD=$(cat /dev/urandom | tr -dc '[:alpha:]' | fold -w ${1:-12} | head -n 1)
 fi
