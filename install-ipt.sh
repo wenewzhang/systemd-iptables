@@ -1,5 +1,5 @@
 #!/bin/sh
-cp usr/bin/* /usr/bin/.
+cp usr/bin/ipt_no_smtp.sh /usr/bin/.
 chmod +x /usr/bin/ipt_no_smtp.sh
 chmod +x /usr/bin/ipt_no_smtp.sh
 cp -r etc/systemd/system/bansmtp-ipt.service /etc/systemd/system/
