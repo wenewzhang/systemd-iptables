@@ -1,5 +1,5 @@
 #!/bin/sh
-cat <<EOF /etc/sysctl.conf
+cat <<EOF >>/etc/sysctl.conf
 fs.file-max = 51200
 net.core.rmem_max = 67108864
 net.core.wmem_max = 67108864
@@ -22,7 +22,7 @@ net.core.default_qdisc=fq
 net.ipv4.tcp_congestion_control=bbr
 EOF
 
-cat <<EOF /etc/security/limits.conf
+cat <<EOF >>/etc/security/limits.conf
 *    soft nofile 64000
 *    hard nofile 64000
 root soft nofile 64000
