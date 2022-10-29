@@ -8,8 +8,6 @@ iptables -A INPUT -p udp --dport 53  -j ACCEPT
 iptables -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
 iptables -A INPUT  -m set --match-set whitelist src -j ACCEPT
 
-[ -f /root/systemd-iptables/whitelist.txt ] && { for i in `cat  /root/systemd-iptables/whitelist.txt`; do /usr/sbin/ipset -A chnip $i; done }
+[ -f /root/systemd-iptables/whitelist.txt ] && { for i in `cat  /root/systemd-iptables/whitelist.txt`; do /usr/sbin/ipset -A whitelist $i; done }
 ipset add whitelist 113.218.0.0/16
-
-
 ##  iptables -L INPUT -v -n 
