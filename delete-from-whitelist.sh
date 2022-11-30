@@ -1,4 +1,4 @@
 #!/bin/sh
 while read -r ip; do
-  sed -i 's/$ip/d' $2
+  sed -i '/$ip/d' $2
 done < $1
