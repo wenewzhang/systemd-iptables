@@ -5,9 +5,12 @@ if [ -f "/usr/sbin/ipset" ]; then
     cp -r etc/systemd/system/whitelist.service /etc/systemd/system/
     systemctl enable whitelist.service
     systemctl start whitelist.service
+    echo "success"
 elif [ -f "/sbin/ipset" ]; then 
     mkdir -p /usr/sbin/
     ln -s /sbin/ipset /usr/sbin/ipset
+    echo "create ln to sbin"
 else 
     apt install ipset -y
+    echo "install ipset, do it again!"
 fi
