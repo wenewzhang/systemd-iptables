@@ -1,5 +1,5 @@
 #!/bin/sh
-apt install git ipset shadowsocks-libev
+apt install git vnstat net-tools iftop shadowsocks-libev fail2ban  ipset -y
 systemctl disable shadowsocks-libev --now
 ./install-whitelist.sh
 ./install-cron.sh
