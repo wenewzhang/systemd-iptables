@@ -60,6 +60,7 @@ echo "Selected choice: $CRYPT"
 ports=(
 "8501"
 "8502"
+"8503"
 "1861"
 "1862"
 "1863"
