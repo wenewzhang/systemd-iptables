@@ -28,3 +28,18 @@ systemctl start bansmtp.service
 ```
 
 git clone https://github.com/wenewzhang/systemd-iptables
+goSeasBox server Install on debian 10
+```
+apt update
+apt upgrade -y
+apt install git vnstat net-tools iftop shadowsocks-libev fail2ban  ipset -y
+systemctl disable shadowsocks-libev --now
+git clone https://github.com/wenewzhang/systemd-iptables.git
+
+```
+
+on Debian 12
+```
+apt install libmbedcrypto7
+ln -s /usr/lib/x86_64-linux-gnu/libmbedcrypto.so.2.28.3 /usr/lib/x86_64-linux-gnu/libmbedcrypto.so.3
+```
