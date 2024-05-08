@@ -5,6 +5,8 @@ iptables -A INPUT -p tcp --dport 22  -j ACCEPT
 iptables -A INPUT -p tcp --dport 80  -j ACCEPT
 iptables -A INPUT -p tcp --dport 8080  -j ACCEPT
 iptables -A INPUT -p tcp --dport 8000  -j ACCEPT
+iptables -A INPUT -p tcp --dport 8443  -j ACCEPT
+iptables -A INPUT -p tcp --dport 443  -j ACCEPT
 
 # Below 1 line need by wget/apt for dns
 iptables -A INPUT -p udp --dport 53  -j ACCEPT
