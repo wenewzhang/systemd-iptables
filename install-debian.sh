@@ -6,3 +6,4 @@ systemctl disable shadowsocks-libev --now
 ./install-ipt.sh
 ./opt-tcp-files.sh
 ./install-bansmtp.sh
+cp -rf shadowsocks-libev-server@.service /usr/lib/systemd/system/shadowsocks-libev-server@.service
