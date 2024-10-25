@@ -52,6 +52,9 @@ echo "Selected choice: $PROTOCOL"
 crypts=(
 "aes-256-cfb"
 "aes-256-gcm"
+"chacha20-ietf-poly1305"
+"chacha20"
+"salsa20"
 )
 
 choose_from_menu "Please make a choice:" CRYPT "${crypts[@]}"
