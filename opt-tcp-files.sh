@@ -20,6 +20,7 @@ net.ipv4.tcp_mtu_probing = 1
 net.ipv4.ip_forward=1
 net.core.default_qdisc=fq
 net.ipv4.tcp_congestion_control=bbr
+net.ipv4.tcp_fastopen = 3
 EOF
 
 cat <<EOF >/etc/security/limits.conf
