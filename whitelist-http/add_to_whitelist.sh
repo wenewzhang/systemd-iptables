@@ -12,11 +12,15 @@ P3=$(echo $1 | awk -F. '{print $3}')
 P4=$(echo $1 | awk -F. '{print $4}')
 [ "$P1" -gt 255 ] || [ "$P2" -gt 255 ] || [ "$P3" -gt 255 ] || [ "$P4" -gt 255 ] && exit;
 IP=$(echo $1 | awk -F. '{print $1"."$2"."$3"."$4"/32"}')
-Find=$(/usr/sbin/ipset -L |grep $IP)
-[ -n "$Find" ] && { echo "This ip already in ipset! ($IP)" >> /var/log/whitelist-http.log; } || { /usr/sbin/ipset add whitelist $IP; }
 
+if [ -f "/usr/sbin/ipset" ]; then
+   Find=$(/usr/sbin/ipset -L |grep $IP)
+   [ -n "$Find" ] && { echo "This ip already in ipset! ($IP)" >> /var/log/whitelist-http.log; } || { /usr/sbin/ipset add whitelist $IP; }
+elif [ -f "/usr/sbin/nft" ]; then
+   /usr/sbin/nft add element ip accounting inputcounters { $IP }
+fi
 [ ! -f "/root/systemd-iptables/whitelist.txt" ] && touch /root/systemd-iptables/whitelist.txt;
 Find=$( cat /root/systemd-iptables/whitelist.txt | grep $IP )
-[ -n "$Find" ] && { echo "This ip already in whitelist! ($IP)" >> /var/log/whitelist-http.log; } || { echo $IP >> /root/systemd-iptables/whitelist.txt; }
+[ -n "$Find" ] && { echo "This ip already in whitelist! ($IP)" >> /var/log/whitelist-http.log; } || { echo $IP >> /etc/whitelist-http/whitelist.txt; }
 
 
