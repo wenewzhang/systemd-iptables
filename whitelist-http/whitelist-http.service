@@ -1,0 +1,16 @@
+[Unit]
+Description=WhiteList gateway for users
+Documentation=
+After=network.target
+
+[Service]
+ExecStart=/etc/whitelist-http/whitelist-http
+ExecReload=/etc/whitelist-http/whitelist-http
+RemainAfterExit=yes
+SuccessExitStatus=143
+TimeoutStopSec=10
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

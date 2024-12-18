@@ -5,8 +5,8 @@ After=network.target
 
 [Service]
 Type=oneshot
-ExecStart=/usr/sbin/nft -f /usr/bin/whitelist.nft
-ExecReload=/usr/sbin/nft -f  /usr/bin/whitelist.nft
+ExecStart=/usr/bin/whitelist-nft.sh
+ExecReload=/usr/bin/whitelist-nft.sh
 ExecStop=/usr/sbin/nft flush ruleset
 RemainAfterExit=yes
 
