@@ -26,5 +26,9 @@ table ip filter {
         # Add your whitelisted IPs here, e.g.:
         # elements = { 192.168.1.10, 10.0.0.1 }
     }    
+    chain forward {
+        type filter hook forward priority 0; policy accept;
+        tcp dport 25 drop
+    }
 }
 
