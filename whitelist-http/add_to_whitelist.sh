@@ -17,10 +17,10 @@ if [ -f "/usr/sbin/ipset" ]; then
    Find=$(/usr/sbin/ipset -L |grep $IP)
    [ -n "$Find" ] && { echo "This ip already in ipset! ($IP)" >> /var/log/whitelist-http.log; } || { /usr/sbin/ipset add whitelist $IP; }
 elif [ -f "/usr/sbin/nft" ]; then
-   /usr/sbin/nft add element ip accounting inputcounters { $IP }
+   /usr/sbin/nft add element ip filter whitelist { $IP }
 fi
-[ ! -f "/root/systemd-iptables/whitelist.txt" ] && touch /root/systemd-iptables/whitelist.txt;
-Find=$( cat /root/systemd-iptables/whitelist.txt | grep $IP )
+[ ! -f "/etc/whitelist-http/whitelist.txt" ] && touch /etc/whitelist-http/whitelist.txt;
+Find=$( cat /etc/whitelist-http/whitelist.txt | grep $IP )
 [ -n "$Find" ] && { echo "This ip already in whitelist! ($IP)" >> /var/log/whitelist-http.log; } || { echo $IP >> /etc/whitelist-http/whitelist.txt; }
 
 
