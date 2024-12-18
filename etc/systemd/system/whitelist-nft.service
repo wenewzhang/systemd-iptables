@@ -1,0 +1,13 @@
+[Unit]
+Description=White List on nft
+Documentation=
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/nft -f /usr/bin/whitelist.nft
+ExecReload=/usr/bin/nft flush ruleset
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

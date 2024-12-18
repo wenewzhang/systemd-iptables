@@ -1,0 +1,30 @@
+# Flush existing ruleset
+flush ruleset
+
+# Create a new table
+table ip filter {
+    # Create the INPUT chain
+    chain input {
+        type filter hook input priority 0; policy drop;
+
+        # Accept specific TCP ports
+        tcp dport { 22, 80, 8080, 8000, 8443, 443 } accept
+
+        # Accept UDP port for DNS
+        udp dport 53 accept
+
+        # Accept related and established connections
+        ct state established,related accept
+
+        # Accept source IPs in the whitelist set
+        ip saddr @whitelist accept
+    }
+}
+
+# Create a set for whitelisted IPs (example usage)
+set whitelist {
+    type ipv4_addr;  # Specify the type of addresses
+    flags dynamic;   # Allows dynamic updates
+    # Add your whitelisted IPs here, e.g.:
+    # elements = { 192.168.1.10, 10.0.0.1 }
+}
