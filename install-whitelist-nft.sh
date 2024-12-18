@@ -1,8 +1,12 @@
 #!/bin/sh
 if [ -f "/usr/sbin/ipset" ]; then
-    apt remove ipset iptables
+    apt remove ipset iptables -y
+    rm /usr/bin/whitelist.sh
+    systemctl disable whitelist.service
+    systemctl stop whitelist.service
+    rm /etc/systemd/system/whitelist.service
 fi
-apt install nftables
+apt install nftables -y
 cp usr/bin/whitelist.nft /usr/bin/.
 cp -r etc/systemd/system/whitelist-nft.service /etc/systemd/system/
 systemctl enable whitelist-nft.service
