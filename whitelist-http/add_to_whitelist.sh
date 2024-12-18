@@ -11,7 +11,7 @@ P2=$(echo $1 | awk -F. '{print $2}')
 P3=$(echo $1 | awk -F. '{print $3}')
 P4=$(echo $1 | awk -F. '{print $4}')
 [ "$P1" -gt 255 ] || [ "$P2" -gt 255 ] || [ "$P3" -gt 255 ] || [ "$P4" -gt 255 ] && exit;
-IP=$(echo $1 | awk -F. '{print $1"."$2"."$3"."$4"/32"}')
+IP=$(echo $1 | awk -F. '{print $1"."$2"."$3"."$4}')
 
 if [ -f "/usr/sbin/ipset" ]; then
    Find=$(/usr/sbin/ipset -L |grep $IP)

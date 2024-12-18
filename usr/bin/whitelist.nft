@@ -21,9 +21,9 @@ table ip filter {
     }
     # Create a set for whitelisted IPs (example usage)
     set whitelist {
-        type ipv4_addr;  # Specify the type of addresses
-        flags interval; 
-        size 65535;
+        type ipv4_addr  # Specify the type of addresses
+        flags interval 
+        size 65535
     }    
     chain forward {
         type filter hook forward priority 0; policy accept;
