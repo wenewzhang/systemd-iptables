@@ -22,9 +22,8 @@ table ip filter {
     # Create a set for whitelisted IPs (example usage)
     set whitelist {
         type ipv4_addr;  # Specify the type of addresses
-        flags dynamic;   # Allows dynamic updates
-        # Add your whitelisted IPs here, e.g.:
-        # elements = { 192.168.1.10, 10.0.0.1 }
+        flags interval; 
+        size 65535;
     }    
     chain forward {
         type filter hook forward priority 0; policy accept;
