@@ -14,7 +14,8 @@ ip_to_num() {
     echo $((a * 256 ** 3 + b * 256 ** 2 + c * 256 + d))
 }
 
-ip_num=$(echo "$ip_to_check" | awk -F'.' '{print $1*256^3 + $2*256^2 + $3*256 + $4}')
+num=$(echo "$ip_to_check" | awk -F'.' '{print $1*256^3 + $2*256^2 + $3*256 + $4}')
+ip_num=$(echo $num | awk '{printf "%.0f", $1}')
 start_time=$(date +%s.%N)
 found=0
 # Check if the IP falls within any China range
@@ -27,7 +28,7 @@ while read -r network_range; do
     #prefix=$(echo "$network_range" | cut -d'/' -f2)
     network_num=$(echo "$network" | awk -F'.' '{print $1*256^3 + $2*256^2 + $3*256 + $4}')
     mask_num=$((0xFFFFFFFF << (32 - prefix)))
-    echo $network_num $mask_num $ip_num
+    # echo $network_num $mask_num $ip_num
 
     # Check if the IP address is within the network range
     if [ $((ip_num & mask_num)) -eq $((network_num & mask_num)) ]; then
