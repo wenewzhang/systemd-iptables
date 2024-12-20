@@ -52,3 +52,4 @@ END {
     for (ip in total) {
         print ip, total[ip]    }
 }' > $filename.total
+cat $filename.total
