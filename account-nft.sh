@@ -40,3 +40,15 @@ END {
     for (ip in total) {
         print ip, total[ip]    }
 }'  | sort -k2 -n > $filename.out
+
+cat $filename.in $filename.out |
+awk '{
+    ip=$1; 
+    traffic=$2;
+    traffic_mb = traffic / 1048576;
+    total[ip] += traffic_mb
+} 
+END {
+    for (ip in total) {
+        print ip, total[ip]    }
+}' > $filename.total
