@@ -51,5 +51,5 @@ awk '{
 END {
     for (ip in total) {
         print ip, total[ip]    }
-}' > $filename.total
+}' | sort -k2 -n > $filename.total
 cat $filename.total
