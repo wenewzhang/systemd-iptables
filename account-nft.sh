@@ -46,7 +46,7 @@ awk '{
     ip=$1; 
     traffic=$2;
     traffic_mb = traffic / 1048576;
-    total[ip] += traffic_mb
+    total[ip] += traffic
 } 
 END {
     for (ip in total) {
