@@ -7,7 +7,10 @@ china_ip_ranges="./etc/chnip.txt"  # File containing China IP ranges
 # Function to convert IP to a numeric value
 ip_to_num() {
     local a b c d
-    IFS=. read -r a b c d <<< "$1"
+    a=$(echo "$1" | awk -F. '{print $1}')
+    b=$(echo "$1" | awk -F. '{print $2}')
+    c=$(echo "$1" | awk -F. '{print $3}')
+    d=$(echo "$1" | awk -F. '{print $4}')
     echo $((a * 256 ** 3 + b * 256 ** 2 + c * 256 + d))
 }
 
