@@ -13,4 +13,12 @@ cat $cachefile | awk '{
     if (ip ~ /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/) {
         print ip, traffic
     }
-}' > $filename
+}' | awk '{
+    ip=$1; 
+    traffic=$2;
+    total[ip] += traffic
+} 
+END {
+    for (ip in total) {
+        print ip, total[ip]    }
+}'  > $filename
