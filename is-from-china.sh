@@ -27,8 +27,8 @@ while read -r network_range; do
     #prefix=$(echo "$network_range" | cut -d'/' -f2)
     network_num=$(echo "$network" | awk -F'.' '{print $1*256^3 + $2*256^2 + $3*256 + $4}')
     mask_num=$((0xFFFFFFFF << (32 - prefix)))
-    echo $network_num $mask_num
-    
+    echo $network_num $mask_num $ip_num
+
     # Check if the IP address is within the network range
     if [ $((ip_num & mask_num)) -eq $((network_num & mask_num)) ]; then
         echo "$ip_to_check is from China $network_range"
