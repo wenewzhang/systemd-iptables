@@ -21,4 +21,22 @@ cat $cachefile | awk '{
 END {
     for (ip in total) {
         print ip, total[ip]    }
-}'  > $filename
+}'  | sort -k2 -n > $filename.in
+
+nft list set accounting outputcounters|grep 'bytes'|awk -F ',' '{print $1 $2}'|awk -F ' ' '{print $7,$12}' > $cachefile
+nft list set accounting outputcounters|grep 'bytes'|awk -F ',' '{print $1 $2}'|awk -F ' ' '{print $1,$6}'  >> $cachefile
+cat $cachefile | awk '{
+    ip=$1; 
+    traffic=$2;
+    if (ip ~ /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/) {
+        print ip, traffic
+    }
+}' | awk '{
+    ip=$1; 
+    traffic=$2;
+    total[ip] += traffic
+} 
+END {
+    for (ip in total) {
+        print ip, total[ip]    }
+}'  | sort -k2 -n > $filename.out
