@@ -7,3 +7,5 @@ cp add*.sh /etc/whitelist-http/.
 cp install*.sh /etc/whitelist-http/.
 cd /etc/whitelist-http
 ./deploy-env.sh .env.new  > /etc/whitelist-http/.env
+touch /etc/whitelist-http/whitelist.txt
+touch /etc/whitelist-http/blacklist.txt
