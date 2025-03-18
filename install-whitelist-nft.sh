@@ -6,6 +6,8 @@ if [ -f "/usr/sbin/ipset" ]; then
     systemctl stop whitelist.service
     rm /etc/systemd/system/whitelist.service
 fi
+cd whitelist-http
+./install-local.sh
 apt install nftables -y
 cp usr/bin/whitelist.nft /usr/bin/.
 cp usr/bin/whitelist-nft.sh /usr/bin/.

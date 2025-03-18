@@ -9,3 +9,4 @@ cd /etc/whitelist-http
 ./deploy-env.sh .env.new  > /etc/whitelist-http/.env
 touch /etc/whitelist-http/whitelist.txt
 touch /etc/whitelist-http/blacklist.txt
+./install-service.sh
