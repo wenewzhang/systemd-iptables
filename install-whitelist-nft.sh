@@ -8,6 +8,7 @@ if [ -f "/usr/sbin/ipset" ]; then
 fi
 cd whitelist-http
 ./install-local.sh
+cd ../
 apt install nftables -y
 cp usr/bin/whitelist.nft /usr/bin/.
 cp usr/bin/whitelist-nft.sh /usr/bin/.
