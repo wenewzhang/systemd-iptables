@@ -7,6 +7,7 @@ table ip filter {
     chain input {
         type filter hook input priority 0; policy drop;
 
+        ip saddr @blacklist drop
         # Accept specific TCP ports
         tcp dport { 22, 80, 8080, 8000, 8443, 443 } accept
 
@@ -17,7 +18,6 @@ table ip filter {
         ct state established,related accept
 
         # Accept source IPs in the whitelist set
-        ip saddr @blacklist drop
         ip saddr @whitelist accept
     }
     # Create a set for whitelisted IPs (example usage)
